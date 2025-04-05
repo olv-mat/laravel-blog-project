@@ -4,7 +4,7 @@
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <img src="{{ asset($article->cover) }}" alt="Cover" class="w-full h-96 object-cover rounded-md mb-6">
                 <h2 class="text-4xl font-bold mb-4">{{ $article->title }}</h2>
-                <p class="text-gray-700 mb-4">Publicado {{ $article->created_at->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i') }} | Tech & Finanças</p>
+                <p class="text-gray-700 mb-4">Publicado {{ $article->created_at->setTimezone('America/Sao_Paulo')->format('d/m/Y H:i') }} | Laravel Blog</p>
                 <div>
                     {!! $article->content !!}
                 </div>
@@ -38,8 +38,8 @@
                 <p>Você precisa se cadastrar para comentar. <a href="{{ route('register') }}" class="text-blue-600 underline">Registre-se</a></p>
             </div>
             @endguest
-            @if ($article->comments->isNotEmpty())
             <div class="mt-6">
+                @if ($article->comments->isNotEmpty())
                 <h4 class="text-2xl font-semibold mb-4">Comentários Recentes</h4>
                 <div class="space-y-4">
                     @foreach($article->comments as $comment)
@@ -50,9 +50,9 @@
                         </div>
                     @endforeach
                 </div>
-                <a href="{{ route('blog') }}" class="text-blue-700 font-bold mt-6 inline-block">Voltar</a>
+                @endif
             </div>
-            @endif
+            <a href="{{ route('blog') }}" class="text-blue-700 font-bold mt-6 inline-block">Voltar</a>
         </section>
     </main>
 </x-layout>
